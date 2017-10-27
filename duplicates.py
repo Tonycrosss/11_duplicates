@@ -1,7 +1,6 @@
 import os
-import sys
 import hashlib
-
+import sys
 
 def hash_counter(path_to_file, blocksize = 65536):
     with open(path_to_file, 'rb') as file_handler:
@@ -17,7 +16,6 @@ def find_duplicates(parent_directory):
     # Dups in format {hash:[names]}
     dups = {'duplicates': []}
     files_info = {}
-    # TODO: Нормальные имена переменных
     for dirName, subdirs, fileList in os.walk(parent_directory):
         print('Scanning %s...' % dirName)
         for filename in fileList:
@@ -27,11 +25,14 @@ def find_duplicates(parent_directory):
                 dups['duplicates'].append(filename)
             else:
                 files_info[filename] = {'md5': file_md5, 'path': path_to_file}
-                print(files_info)
+    return dups
 
-    print(dups)
+
+def dups_print(dups_dict):
+    print('В данной папке имеются дубликаты :')
+    print(dups_dict['duplicates'])
 
 if __name__ == '__main__':
-    find_duplicates('E:/distr/python/devman/11_duplicates/')
-    print(hash_counter('./dubles/alala.txt'))
-    print(hash_counter('./dubles/dubles1/alala.txt'))
+    path_to_scan = sys.argv[1]
+    dups_dict = find_duplicates(path_to_scan)
+    dups_print(dups_dict)
