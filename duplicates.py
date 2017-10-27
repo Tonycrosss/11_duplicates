@@ -15,18 +15,23 @@ def hash_counter(path_to_file, blocksize = 65536):
 
 def find_duplicates(parent_directory):
     # Dups in format {hash:[names]}
-    dups = {}
-    filename_list = []
+    dups = {'duplicates': []}
+    files_info = {}
     # TODO: Нормальные имена переменных
     for dirName, subdirs, fileList in os.walk(parent_directory):
         print('Scanning %s...' % dirName)
         for filename in fileList:
-            if filename in filename_list:
-                dups['{}'.format(filename)] = '{}'.format(dirName)
+            path_to_file = dirName + '/' + filename
+            file_md5 = hash_counter(path_to_file)
+            if filename in files_info.keys() and files_info[filename]['md5'] == file_md5:
+                dups['duplicates'].append(filename)
             else:
-                filename_list.append(filename)
+                files_info[filename] = {'md5': file_md5, 'path': path_to_file}
+                print(files_info)
+
+    print(dups)
 
 if __name__ == '__main__':
-    find_duplicates('./')
+    find_duplicates('E:/distr/python/devman/11_duplicates/')
     print(hash_counter('./dubles/alala.txt'))
     print(hash_counter('./dubles/dubles1/alala.txt'))
