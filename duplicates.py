@@ -2,6 +2,7 @@ import os
 import hashlib
 import sys
 
+
 def hash_counter(path_to_file, blocksize = 65536):
     with open(path_to_file, 'rb') as file_handler:
         hasher = hashlib.md5()
