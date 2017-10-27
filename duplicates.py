@@ -17,10 +17,10 @@ def find_duplicates(parent_directory):
     # Dups in format {hash:[names]}
     dups = {'duplicates': []}
     files_info = {}
-    for dirName, subdirs, fileList in os.walk(parent_directory):
-        print('Scanning %s...' % dirName)
-        for filename in fileList:
-            path_to_file = dirName + '/' + filename
+    for dir_name, sub_dirs, file_list in os.walk(parent_directory):
+        print('Scanning %s...' % dir_name)
+        for filename in file_list:
+            path_to_file = dir_name + '/' + filename
             file_md5 = hash_counter(path_to_file)
             if filename in files_info.keys() and files_info[filename]['md5'] == file_md5:
                 dups['duplicates'].append(filename)
