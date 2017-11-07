@@ -6,9 +6,8 @@ This module is searching for dublicates in directory and subdirectories
 
 ```bash
 $ python duplicates.py E:\distr\python\devman\11_duplicates
-Scanning E:\distr\python\devman\11_duplicates...
 В данной папке имеются дубликаты :
-['master', '111.txt']
+['E:\\distr\\python\\devman\\11_duplicates\\dubles\\dubles1\\111.txt']
 
 ```
 
