@@ -23,7 +23,7 @@ def find_duplicates(parent_directory):
             path_to_file = dir_name + '/' + filename
             file_md5 = hash_counter(path_to_file)
             if filename in files_info.keys() and files_info[filename]['md5'] == file_md5:
-                dups['duplicates'].append(filename)
+                dups['duplicates'].append(path_to_file)
             else:
                 files_info[filename] = {'md5': file_md5, 'path': path_to_file}
     return dups
