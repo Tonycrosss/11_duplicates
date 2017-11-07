@@ -35,5 +35,4 @@ def dups_print(dups_dict):
 if __name__ == '__main__':
     path_to_scan = sys.argv[1]
     dups_dict = find_duplicates(path_to_scan)
-    print(dups_dict)
     dups_print(dups_dict)
