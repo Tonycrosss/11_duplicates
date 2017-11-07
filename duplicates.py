@@ -14,8 +14,7 @@ def hash_counter(path_to_file, blocksize = 65536):
 
 
 def find_duplicates(parent_directory):
-    # Dups in format {hash:[names]}
-    dups = {'duplicates': []}
+    dups = {'duplicates': []}  # type: dict{str: list}
     files_info = {}
     for dir_name, sub_dirs, file_list in os.walk(parent_directory):
         print('Scanning %s...' % dir_name)
@@ -36,4 +35,5 @@ def dups_print(dups_dict):
 if __name__ == '__main__':
     path_to_scan = sys.argv[1]
     dups_dict = find_duplicates(path_to_scan)
+    print(dups_dict)
     dups_print(dups_dict)
